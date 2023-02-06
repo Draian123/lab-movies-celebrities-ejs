@@ -4,7 +4,14 @@ const Celebrity = require('../models/Celebrity.model.js')
 // all your routes here
 
 router.get('/',   async (req, res) => {
-    res.render('celebrities/celebrities.ejs')
+    let allCelebrities
+    try{
+        allCelebrities = await Celebrity.find()
+        // console.log(allCelebrities)
+    }catch (err){
+        console.log("Something went wrong: ", err)
+    }
+    res.render('celebrities/celebrities.ejs', {allcelebs: allCelebrities})
 })
 router.get('/create', async (req, res) => {
     res.render('celebrities/new-celebrity')
