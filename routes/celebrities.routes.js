@@ -19,7 +19,6 @@ router.get('/create', async (req, res) => {
 
   router.post('/create', async (req, res) => {
     let body = req.body
-    console.log(body)
     const createdCeleb = await Celebrity.create(body)
 
     if(!createdCeleb){
